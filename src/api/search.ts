@@ -1,8 +1,6 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 
-// const defaultSl = 'en'; // source language (default: Spanish)
-// const tl = 'de'; // target language: German (constant)
 const uri = 'http://dict.leo.org/%s%s/';
 
 class LeoResult {
