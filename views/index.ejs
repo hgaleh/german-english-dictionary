@@ -3,47 +3,111 @@
 
 <head>
   <title>German To English Dictionary</title>
+  <style>
+    a.noclick {
+      all: unset;
+      color: inherit;
+      cursor: default;
+      text-decoration: none;
+    }
+
+    a.noclick:hover {
+      color: #0077cc;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    a.noclick:active {
+      background-color: gray;
+      cursor: pointer;
+    }
+
+    #notif {
+      position: fixed;
+      transform: translate(-50%);
+      left: 50%;
+      top: 1rem;
+      background: #333;
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.9em;
+      white-space: nowrap;
+      z-index: 10;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      display: none;
+    }
+
+    #notif.show {
+      display: inline;
+    }
+  </style>
+
+  <script>
+    function copyToClipboard(link) {
+      const text = link.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        // Find the notification sibling
+        notif.classList.add('show');
+        setTimeout(() => notif.classList.remove('show'), 1000);
+      });
+      return false;
+    }
+
+    function search(el, event) {
+      if (event.keyCode === 13) {
+        window,location = `/?q=${el.value}`;
+      }
+    }
+  </script>
 </head>
 
 <body>
+  <span id="notif">Copied!</span>
+  <input type="text" value="" onkeypress="search(this, event)">
   <% if (translation.base) { %>
     <h3>Base forms: </h3>
     <ul>
-    <% translation.base.forEach(function(base) { %>
-      <li>
-        <a href="/?q=<%= base %>"><%= base %></a>
-      </li>
-      <% }); %>
+      <% translation.base.forEach(function(base) { %>
+        <li>
+          <a href="/?q=<%= base %>">
+            <%= base %>
+          </a>
+        </li>
+        <% }); %>
     </ul>
-  <% } %>
+    <% } %>
 
-  <% if (translation.subst) { %>
-    <%- include('part', { part: { name: 'subst', data: translation.subst } }) %>
-  <% } %>
+      <% if (translation.subst) { %>
+        <%- include('en-part', { part: { name: 'subst' , data: translation.subst } }) %>
+          <% } %>
 
-  <% if (translation.verb) { %>
-    <%- include('part', { part: { name: 'verb', data: translation.verb } }) %>
-  <% } %>
+            <% if (translation.verb) { %>
+              <%- include('en-part', { part: { name: 'verb' , data: translation.verb } }) %>
+                <% } %>
 
-  <% if (translation.adjadv) { %>
-    <%- include('part', { part: { name: 'adjadv', data: translation.adjadv } }) %>
-  <% } %>
+                  <% if (translation.adjadv) { %>
+                    <%- include('en-part', { part: { name: 'adjadv' , data: translation.adjadv } }) %>
+                      <% } %>
 
-  <% if (translation.praep) { %>
-    <%- include('part', { part: { name: 'praep', data: translation.praep } }) %>
-  <% } %>
+                        <% if (translation.praep) { %>
+                          <%- include('en-part', { part: { name: 'praep' , data: translation.praep } }) %>
+                            <% } %>
 
-  <% if (translation.definition) { %>
-    <%- include('part', { part: { name: 'definition', data: translation.definition } }) %>
-  <% } %>
+                              <% if (translation.definition) { %>
+                                <%- include('en-part', { part: { name: 'definition' , data: translation.definition } })
+                                  %>
+                                  <% } %>
 
-  <% if (translation.phrase) { %>
-    <%- include('part', { part: { name: 'phrase', data: translation.phrase } }) %>
-  <% } %>
+                                    <% if (translation.phrase) { %>
+                                      <%- include('de-part', { part: { name: 'phrase' , data: translation.phrase } }) %>
+                                        <% } %>
 
-  <% if (translation.example) { %>
-    <%- include('part', { part: { name: 'example', data: translation.example } }) %>
-  <% } %>
+                                          <% if (translation.example) { %>
+                                            <%- include('de-part', { part: { name: 'example' , data: translation.example
+                                              } }) %>
+                                              <% } %>
 </body>
 
 </html>

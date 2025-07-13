@@ -2,7 +2,7 @@
 <ul>
     <% part.data.forEach(function(row) { %>
         <li>
-            <b><%= row.de %>: </b>  <%= row.en %>
+            <a class="noclick" onclick="copyToClipboard(this)" title="<%= row.en %>"><%= row.de %></a>
         </li>
     <% }); %>
 </ul>
