@@ -1,0 +1,8 @@
+<h3><%= part.name  %></h3>
+<ul>
+    <% part.data.forEach(function(row) { %>
+        <li>
+            <b><%= row.de %>: </b>  <%= row.en %>
+        </li>
+    <% }); %>
+</ul>

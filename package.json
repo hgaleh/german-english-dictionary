@@ -1,0 +1,32 @@
+{
+  "name": "german-dictionary",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.10.0",
+    "cheerio": "^1.1.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "module-alias": "^2.2.3",
+    "node-fetch": "3",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^1.0.0",
+    "@types/ejs": "^3.1.5",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.13",
+    "@types/node-fetch": "^2.6.12",
+    "nodemon": "^3.1.10"
+  },
+  "scripts": {
+    "prestart": "rm -rf dist; tsc",
+    "start": "nodemon dist/index.js",
+    "predev": "rm -rf dist; tsc",
+    "dev": "nodemon --inspect dist/index.js"
+  },
+  "_moduleAliases": {
+    "api": "dist/api"
+  }
+}

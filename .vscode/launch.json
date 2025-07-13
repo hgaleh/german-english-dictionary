@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach to Process",
+            "port": 9229,
+            "restart": false,
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/dist/**/*.js"
+            ],
+            "sourceMaps": true,
+            "resolveSourceMapLocations": [
+                "${workspaceFolder}/src/**/*.ts",     // Only trust TS files from your source dir
+                "${workspaceFolder}/dist/**/*.js",     // Only trust JS files from your source dir
+                "!**/node_modules/**"
+            ]
+        }
+    ]
+}

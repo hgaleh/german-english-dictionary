@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>German To English Dictionary</title>
+</head>
+
+<body>
+  <% if (translation.base) { %>
+    <h3>Base forms: </h3>
+    <ul>
+    <% translation.base.forEach(function(base) { %>
+      <li>
+        <a href="/?q=<%= base %>"><%= base %></a>
+      </li>
+      <% }); %>
+    </ul>
+  <% } %>
+
+  <% if (translation.subst) { %>
+    <%- include('part', { part: { name: 'subst', data: translation.subst } }) %>
+  <% } %>
+
+  <% if (translation.verb) { %>
+    <%- include('part', { part: { name: 'verb', data: translation.verb } }) %>
+  <% } %>
+
+  <% if (translation.adjadv) { %>
+    <%- include('part', { part: { name: 'adjadv', data: translation.adjadv } }) %>
+  <% } %>
+
+  <% if (translation.praep) { %>
+    <%- include('part', { part: { name: 'praep', data: translation.praep } }) %>
+  <% } %>
+
+  <% if (translation.definition) { %>
+    <%- include('part', { part: { name: 'definition', data: translation.definition } }) %>
+  <% } %>
+
+  <% if (translation.phrase) { %>
+    <%- include('part', { part: { name: 'phrase', data: translation.phrase } }) %>
+  <% } %>
+
+  <% if (translation.example) { %>
+    <%- include('part', { part: { name: 'example', data: translation.example } }) %>
+  <% } %>
+</body>
+
+</html>
