@@ -45,9 +45,22 @@
   </style>
 
   <script>
-    function copyToClipboard(link) {
+    function onPartClick(link) {
       const text = link.textContent;
       navigator.clipboard.writeText(text).then(() => {
+        // Find the notification sibling
+        notif.classList.add('show');
+        setTimeout(() => notif.classList.remove('show'), 1000);
+      });
+      return false;
+    }
+
+    function onExampleClick(link) {
+      const text = link.textContent;
+      const title = link.title;
+      const keyword = txtSearch.value;
+  
+      navigator.clipboard.writeText(`${text}\t${title}\t${keyword}`).then(() => {
         // Find the notification sibling
         notif.classList.add('show');
         setTimeout(() => notif.classList.remove('show'), 1000);
@@ -65,7 +78,7 @@
 
 <body>
   <span id="notif">Copied!</span>
-  <input type="text" value="" onkeypress="search(this, event)">
+  <input id="txtSearch" type="text" value="<%= keyword %>" onkeypress="search(this, event)">
   <% if (translation.base) { %>
     <h3>Base forms: </h3>
     <ul>
@@ -80,31 +93,31 @@
   <% } %>
 
   <% if (translation.subst) { %>
-    <%- include('part', { name: 'subst' , data: mapDataEn(translation.subst) }) %>
+    <%- include('part', { name: 'subst' , data: mapDataEn(translation.subst), onclick: 'onPartClick' }) %>
   <% } %>
 
   <% if (translation.verb) { %>
-    <%- include('part', { name: 'verb' , data: mapDataEn(translation.verb) }) %>
+    <%- include('part', { name: 'verb' , data: mapDataEn(translation.verb), onclick: 'onPartClick' }) %>
   <% } %>
 
   <% if (translation.adjadv) { %>
-    <%- include('part', { name: 'adjadv' , data: mapDataEn(translation.adjadv) }) %>
+    <%- include('part', { name: 'adjadv' , data: mapDataEn(translation.adjadv), onclick: 'onPartClick' }) %>
   <% } %>
 
   <% if (translation.praep) { %>
-    <%- include('part', { name: 'praep' , data: mapDataEn(translation.praep)}) %>
+    <%- include('part', { name: 'praep' , data: mapDataEn(translation.praep), onclick: 'onPartClick' }) %>
   <% } %>
 
   <% if (translation.definition) { %>
-    <%- include('part', { name: 'definition' , data: mapDataEn(translation.definition) }) %>
+    <%- include('part', { name: 'definition' , data: mapDataEn(translation.definition), onclick: 'onPartClick' }) %>
   <% } %>
 
   <% if (translation.phrase) { %>
-    <%- include('part', { name: 'phrase' , data: mapDataEn(translation.phrase) }) %>
+    <%- include('part', { name: 'phrase' , data: mapDataEn(translation.phrase), onclick: 'onPartClick' }) %>
   <% } %>
 
   <% if (translation.example) { %>
-    <%- include('part', { name: 'example' , data: mapDataDe(translation.example) }) %>
+    <%- include('part', { name: 'example' , data: mapDataDe(translation.example), onclick: 'onExampleClick' }) %>
   <% } %>
 </body>
 

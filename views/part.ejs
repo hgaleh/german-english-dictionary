@@ -2,7 +2,7 @@
 <ul>
     <% data.forEach(function(row) { %>
         <li>
-            <a class="noclick" onclick="copyToClipboard(this)" title="<%= row.title %>"><%= row.text %></a>
+            <a class="noclick" onclick="<%= onclick %>(this)" title="<%= row.title %>"><%= row.text %></a>
         </li>
     <% }); %>
 </ul>

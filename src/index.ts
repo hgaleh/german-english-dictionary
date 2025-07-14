@@ -11,7 +11,12 @@ app.get('/', async (req, res) => {
 	const keyword: string = req.query.q as string;
 	const result = await search(keyword);
 
-	res.render('index', { translation: result, mapDataEn, mapDataDe });
+	res.render('index', { 
+		translation: result,
+		keyword,
+		mapDataEn,
+		mapDataDe 
+	});
 });
 
 app.listen(3000, () => {
