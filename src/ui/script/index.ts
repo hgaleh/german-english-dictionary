@@ -25,7 +25,7 @@ export function onExampleClick(link: HTMLLinkElement) {
 }
 
 export function search(el: HTMLInputElement, event: KeyboardEvent) {
-    if (event.code === '13') {
+    if (event.key === 'Enter') {
         window.location.href = `/?q=${el.value}`;
     }
 }

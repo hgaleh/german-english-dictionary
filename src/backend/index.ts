@@ -9,8 +9,14 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(join(__dirname, 'ui')));
 
-app.get('/', async (req, res) => {
+app.get('/', async (req, res, next) => {
 	const keyword: string = req.query.q as string;
+
+	if (!keyword) {
+		res.redirect('/?q=hallo');
+		return;
+	}
+
 	const result = await search(keyword);
 
 	res.render('index', { 

@@ -3,6 +3,7 @@ a.noclick {
     color: inherit;
     cursor: default;
     text-decoration: none;
+    padding: 0.2rem;
 }
 
 a.noclick:hover {
@@ -12,8 +13,10 @@ a.noclick:hover {
 }
 
 a.noclick:active {
-    background-color: gray;
     cursor: pointer;
+    background-color: yellow;
+    cursor: pointer;
+    border-radius: 0.1rem;
 }
 
 #notif {
