@@ -3,82 +3,13 @@
 
 <head>
   <title>German To English Dictionary</title>
-  <style>
-    a.noclick {
-      all: unset;
-      color: inherit;
-      cursor: default;
-      text-decoration: none;
-    }
-
-    a.noclick:hover {
-      color: #0077cc;
-      text-decoration: underline;
-      cursor: pointer;
-    }
-
-    a.noclick:active {
-      background-color: gray;
-      cursor: pointer;
-    }
-
-    #notif {
-      position: fixed;
-      transform: translate(-50%);
-      left: 50%;
-      top: 1rem;
-      background: #333;
-      color: #fff;
-      padding: 2px 8px;
-      border-radius: 6px;
-      font-size: 0.9em;
-      white-space: nowrap;
-      z-index: 10;
-      pointer-events: none;
-      transition: opacity 0.2s;
-      display: none;
-    }
-
-    #notif.show {
-      display: inline;
-    }
-  </style>
-
-  <script>
-    function onPartClick(link) {
-      const text = link.textContent;
-      navigator.clipboard.writeText(text).then(() => {
-        // Find the notification sibling
-        notif.classList.add('show');
-        setTimeout(() => notif.classList.remove('show'), 1000);
-      });
-      return false;
-    }
-
-    function onExampleClick(link) {
-      const text = link.textContent;
-      const title = link.title;
-      const keyword = txtSearch.value;
-  
-      navigator.clipboard.writeText(`${text}\t${title}\t${keyword}`).then(() => {
-        // Find the notification sibling
-        notif.classList.add('show');
-        setTimeout(() => notif.classList.remove('show'), 1000);
-      });
-      return false;
-    }
-
-    function search(el, event) {
-      if (event.keyCode === 13) {
-        window, location = `/?q=${el.value}`;
-      }
-    }
-  </script>
+  <script src="js/index.js"></script>
+  <link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
   <span id="notif">Copied!</span>
-  <input id="txtSearch" type="text" value="<%= keyword %>" onkeypress="search(this, event)">
+  <input id="txtSearch" type="text" value="<%= keyword %>" onkeypress="lib.search(this, event)">
   <% if (translation.base) { %>
     <h3>Base forms: </h3>
     <ul>
@@ -93,31 +24,31 @@
   <% } %>
 
   <% if (translation.subst) { %>
-    <%- include('part', { name: 'subst' , data: mapDataEn(translation.subst), onclick: 'onPartClick' }) %>
+    <%- include('part', { name: 'subst' , data: mapDataEn(translation.subst), onclick: 'lib.onPartClick' }) %>
   <% } %>
 
   <% if (translation.verb) { %>
-    <%- include('part', { name: 'verb' , data: mapDataEn(translation.verb), onclick: 'onPartClick' }) %>
+    <%- include('part', { name: 'verb' , data: mapDataEn(translation.verb), onclick: 'lib.onPartClick' }) %>
   <% } %>
 
   <% if (translation.adjadv) { %>
-    <%- include('part', { name: 'adjadv' , data: mapDataEn(translation.adjadv), onclick: 'onPartClick' }) %>
+    <%- include('part', { name: 'adjadv' , data: mapDataEn(translation.adjadv), onclick: 'lib.onPartClick' }) %>
   <% } %>
 
   <% if (translation.praep) { %>
-    <%- include('part', { name: 'praep' , data: mapDataEn(translation.praep), onclick: 'onPartClick' }) %>
+    <%- include('part', { name: 'praep' , data: mapDataEn(translation.praep), onclick: 'lib.onPartClick' }) %>
   <% } %>
 
   <% if (translation.definition) { %>
-    <%- include('part', { name: 'definition' , data: mapDataEn(translation.definition), onclick: 'onPartClick' }) %>
+    <%- include('part', { name: 'definition' , data: mapDataEn(translation.definition), onclick: 'lib.onPartClick' }) %>
   <% } %>
 
   <% if (translation.phrase) { %>
-    <%- include('part', { name: 'phrase' , data: mapDataEn(translation.phrase), onclick: 'onPartClick' }) %>
+    <%- include('part', { name: 'phrase' , data: mapDataEn(translation.phrase), onclick: 'lib.onPartClick' }) %>
   <% } %>
 
   <% if (translation.example) { %>
-    <%- include('part', { name: 'example' , data: mapDataDe(translation.example), onclick: 'onExampleClick' }) %>
+    <%- include('part', { name: 'example' , data: mapDataDe(translation.example), onclick: 'lib.onExampleClick' }) %>
   <% } %>
 </body>
 

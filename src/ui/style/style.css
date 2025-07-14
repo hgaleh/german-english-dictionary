@@ -1,0 +1,38 @@
+a.noclick {
+    all: unset;
+    color: inherit;
+    cursor: default;
+    text-decoration: none;
+}
+
+a.noclick:hover {
+    color: #0077cc;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+a.noclick:active {
+    background-color: gray;
+    cursor: pointer;
+}
+
+#notif {
+    position: fixed;
+    transform: translate(-50%);
+    left: 50%;
+    top: 1rem;
+    background: #333;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    display: none;
+}
+
+#notif.show {
+    display: inline;
+}

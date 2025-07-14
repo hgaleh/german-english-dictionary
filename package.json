@@ -7,7 +7,6 @@
     "cheerio": "^1.1.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
-    "module-alias": "^2.2.3",
     "node-fetch": "3",
     "typescript": "^5.8.3"
   },
@@ -15,17 +14,23 @@
     "@types/cheerio": "^1.0.0",
     "@types/ejs": "^3.1.5",
     "@types/express": "^5.0.3",
+    "@types/minimatch": "^6.0.0",
     "@types/node": "^24.0.13",
     "@types/node-fetch": "^2.6.12",
-    "nodemon": "^3.1.10"
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^13.0.0",
+    "minimatch": "^10.0.3",
+    "nodemon": "^3.1.10",
+    "ts-loader": "^9.5.2",
+    "webpack": "^5.100.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2",
+    "webpack-node-externals": "^3.0.0"
   },
   "scripts": {
-    "prestart": "rm -rf dist; tsc",
-    "start": "nodemon dist/index.js",
-    "predev": "rm -rf dist; tsc",
-    "dev": "nodemon --inspect dist/index.js"
-  },
-  "_moduleAliases": {
-    "api": "dist/api"
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "watch": "webpack --watch --mode=development",
+    "dev": "node --inspect ./node_modules/.bin/webpack -- serve --mode=development"
   }
 }

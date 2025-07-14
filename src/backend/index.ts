@@ -1,11 +1,13 @@
-import 'module-alias/register';
 import express from 'express';
-import { search } from 'api/search';
-import { Pair } from 'api/search';
+import { search } from './api/search';
+import { Pair } from './api/search';
+import { join } from 'path';
 
 const app = express();
 
 app.set('view engine', 'ejs');
+
+app.use(express.static(join(__dirname, 'ui')));
 
 app.get('/', async (req, res) => {
 	const keyword: string = req.query.q as string;
