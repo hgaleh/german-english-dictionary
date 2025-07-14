@@ -52,7 +52,7 @@ function getBaseForms($: cheerio.CheerioAPI): string[] | null {
 
 type Lang = 'en' | 'de';
 
-type Pair = Record<Lang, string>;
+export type Pair = Record<Lang, string>;
 
 function getText($: cheerio.CheerioAPI, elt: any): string {
   return $(elt).text().trim();

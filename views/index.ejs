@@ -57,7 +57,7 @@
 
     function search(el, event) {
       if (event.keyCode === 13) {
-        window,location = `/?q=${el.value}`;
+        window, location = `/?q=${el.value}`;
       }
     }
   </script>
@@ -77,37 +77,35 @@
         </li>
         <% }); %>
     </ul>
-    <% } %>
+  <% } %>
 
-      <% if (translation.subst) { %>
-        <%- include('en-part', { part: { name: 'subst' , data: translation.subst } }) %>
-          <% } %>
+  <% if (translation.subst) { %>
+    <%- include('part', { name: 'subst' , data: mapDataEn(translation.subst) }) %>
+  <% } %>
 
-            <% if (translation.verb) { %>
-              <%- include('en-part', { part: { name: 'verb' , data: translation.verb } }) %>
-                <% } %>
+  <% if (translation.verb) { %>
+    <%- include('part', { name: 'verb' , data: mapDataEn(translation.verb) }) %>
+  <% } %>
 
-                  <% if (translation.adjadv) { %>
-                    <%- include('en-part', { part: { name: 'adjadv' , data: translation.adjadv } }) %>
-                      <% } %>
+  <% if (translation.adjadv) { %>
+    <%- include('part', { name: 'adjadv' , data: mapDataEn(translation.adjadv) }) %>
+  <% } %>
 
-                        <% if (translation.praep) { %>
-                          <%- include('en-part', { part: { name: 'praep' , data: translation.praep } }) %>
-                            <% } %>
+  <% if (translation.praep) { %>
+    <%- include('part', { name: 'praep' , data: mapDataEn(translation.praep)}) %>
+  <% } %>
 
-                              <% if (translation.definition) { %>
-                                <%- include('en-part', { part: { name: 'definition' , data: translation.definition } })
-                                  %>
-                                  <% } %>
+  <% if (translation.definition) { %>
+    <%- include('part', { name: 'definition' , data: mapDataEn(translation.definition) }) %>
+  <% } %>
 
-                                    <% if (translation.phrase) { %>
-                                      <%- include('de-part', { part: { name: 'phrase' , data: translation.phrase } }) %>
-                                        <% } %>
+  <% if (translation.phrase) { %>
+    <%- include('part', { name: 'phrase' , data: mapDataEn(translation.phrase) }) %>
+  <% } %>
 
-                                          <% if (translation.example) { %>
-                                            <%- include('de-part', { part: { name: 'example' , data: translation.example
-                                              } }) %>
-                                              <% } %>
+  <% if (translation.example) { %>
+    <%- include('part', { name: 'example' , data: mapDataDe(translation.example) }) %>
+  <% } %>
 </body>
 
 </html>
