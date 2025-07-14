@@ -4,6 +4,7 @@ a.noclick {
     cursor: default;
     text-decoration: none;
     padding: 0.2rem;
+    user-select: none;
 }
 
 a.noclick:hover {
