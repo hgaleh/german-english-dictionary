@@ -3,6 +3,7 @@ const nodeExternals = require('webpack-node-externals');
 const isProduction = process.env.NODE_ENV == 'production';
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const NodemonPlugin = require('nodemon-webpack-plugin');
 
 const backend = {
     entry: {
@@ -105,6 +106,13 @@ module.exports = () => {
         ui.devtool = 'source-map';
         backend.mode = 'development';
         backend.devtool = 'source-map';
+        backend.plugins.push(new NodemonPlugin({
+            script: './dist/index.js',
+            watch: path.resolve('./dist'),
+            delay: '200',
+            ext: 'js,json,ejs,css',
+            nodeArgs: ['--inspect']
+        }))
     }
     return [backend, ui];
 };

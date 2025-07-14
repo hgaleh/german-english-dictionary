@@ -9,7 +9,7 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(join(__dirname, 'ui')));
 
-app.get('/', async (req, res, next) => {
+app.get('/', async (req, res) => {
 	const keyword: string = req.query.q as string;
 
 	if (!keyword) {
