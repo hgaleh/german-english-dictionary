@@ -1,8 +1,10 @@
 <h3><%= name  %></h3>
 <ul>
-    <% data.forEach(function(row) { %>
-        <li>
-            <a class="noclick" onclick="<%= onclick %>(this)" title="<%= row.title %>"><%= row.text %></a>
-        </li>
-    <% }); %>
+<% data.forEach(function(row) { %>
+    <li>
+        <a class="noclick" onclick="<%= onclick %>(this)" title="<%= row.title.join(', ') %>">
+            <%- row.text.map(function(t) { return '<span>' + t.replace(/\[([^\]]+)\]/g, '<span class="bracketed">[$1]</span>') + '</span>'; }).join(' - ') %>
+        </a>
+    </li>
+<% }); %>
 </ul>

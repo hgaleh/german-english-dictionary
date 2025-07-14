@@ -20,6 +20,22 @@ a.noclick:active {
     border-radius: 0.1rem;
 }
 
+a.noclick> :not(span:first-of-type) {
+    color: #888;
+    font-size: 0.95em;
+    opacity: 0.7;
+    font-weight: normal;
+}
+
+a.noclick span.bracketed {
+    color: #6c8f6a;
+    background: #eaf7ea;
+    font-weight: normal;
+    opacity: 0.85;
+    border-radius: 3px;
+    padding: 0 2px;
+}
+
 #notif {
     position: fixed;
     transform: translate(-50%);

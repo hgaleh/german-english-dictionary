@@ -28,8 +28,8 @@ function getDefinitions($: cheerio.CheerioAPI) {
       const targetTd = row.find(`td[lang="de"]`);
       const targetText = getText($, targetTd[0]);
       result.push({
-        'en': sourceText,
-        'de': targetText,
+        'en': sourceText.split('|').filter(val => val),
+        'de': targetText.split('|').filter(val => val),
       });
     });
     return result;
@@ -52,7 +52,7 @@ function getBaseForms($: cheerio.CheerioAPI): string[] | null {
 
 type Lang = 'en' | 'de';
 
-export type Pair = Record<Lang, string>;
+export type Pair = Record<Lang, string[]>;
 
 function getText($: cheerio.CheerioAPI, elt: any): string {
   return $(elt).text().trim();

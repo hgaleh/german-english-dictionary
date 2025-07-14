@@ -2,7 +2,7 @@ declare let notif: HTMLSpanElement;
 declare let txtSearch: HTMLInputElement;
 
 export function onPartClick(link: HTMLLinkElement) {
-    const text = link.textContent || '';
+    const text = link.textContent?.trim() || '';
     navigator.clipboard.writeText(text).then(() => {
         // Find the notification sibling
         notif.classList.add('show');
@@ -12,7 +12,7 @@ export function onPartClick(link: HTMLLinkElement) {
 }
 
 export function onExampleClick(link: HTMLLinkElement) {
-    const text = link.textContent;
+    const text = link.textContent?.trim() || '';
     const title = link.title;
     const keyword = txtSearch.value;
 
