@@ -24,16 +24,15 @@ a.noclick> :not(span:first-of-type) {
     color: #888;
     font-size: 0.95em;
     opacity: 0.7;
-    font-weight: normal;
 }
 
 a.noclick span.bracketed {
     color: #6c8f6a;
     background: #eaf7ea;
-    font-weight: normal;
     opacity: 0.85;
     border-radius: 3px;
     padding: 0 2px;
+    font-weight: 200;
 }
 
 #notif {
@@ -55,4 +54,16 @@ a.noclick span.bracketed {
 
 #notif.show {
     display: inline;
+}
+
+h4 {
+  font-family: 'Montserrat', serif;
+  user-select: none;
+}
+
+body, li {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  background-color: #FFF9E3;
+  color: #333333;
 }

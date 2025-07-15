@@ -5,6 +5,8 @@
   <title>German To English Dictionary</title>
   <script src="js/index.js"></script>
   <link rel="stylesheet" href="style/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inter:200,300&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -24,31 +26,31 @@
   <% } %>
 
   <% if (translation.subst) { %>
-    <%- include('part', { name: 'subst' , data: mapDataEn(translation.subst), onclick: 'lib.onPartClick' }) %>
+    <%- include('part', { name: 'Nouns' , data: mapDataEn(translation.subst), onclick: 'lib.onPartClick' }) %>
   <% } %>
 
   <% if (translation.verb) { %>
-    <%- include('part', { name: 'verb' , data: mapDataEn(translation.verb), onclick: 'lib.onPartClick' }) %>
+    <%- include('part', { name: 'Verbs' , data: mapDataEn(translation.verb), onclick: 'lib.onPartClick' }) %>
   <% } %>
 
   <% if (translation.adjadv) { %>
-    <%- include('part', { name: 'adjadv' , data: mapDataEn(translation.adjadv), onclick: 'lib.onPartClick' }) %>
+    <%- include('part', { name: 'Adjectives / Adverbs' , data: mapDataEn(translation.adjadv), onclick: 'lib.onPartClick' }) %>
   <% } %>
 
   <% if (translation.praep) { %>
-    <%- include('part', { name: 'praep' , data: mapDataEn(translation.praep), onclick: 'lib.onPartClick' }) %>
+    <%- include('part', { name: 'Prepositions / Pronouns' , data: mapDataEn(translation.praep), onclick: 'lib.onPartClick' }) %>
   <% } %>
 
   <% if (translation.definition) { %>
-    <%- include('part', { name: 'definition' , data: mapDataEn(translation.definition), onclick: 'lib.onPartClick' }) %>
+    <%- include('part', { name: 'Definitions' , data: mapDataEn(translation.definition), onclick: 'lib.onPartClick' }) %>
   <% } %>
 
   <% if (translation.phrase) { %>
-    <%- include('part', { name: 'phrase' , data: mapDataDe(translation.phrase), onclick: 'lib.onPartClick' }) %>
+    <%- include('part', { name: 'Phrases / Collocations' , data: mapDataDe(translation.phrase), onclick: 'lib.onPartClick' }) %>
   <% } %>
 
   <% if (translation.example) { %>
-    <%- include('part', { name: 'example' , data: mapDataDe(translation.example), onclick: 'lib.onExampleClick' }) %>
+    <%- include('part', { name: 'Examples' , data: mapDataDe(translation.example), onclick: 'lib.onExampleClick' }) %>
   <% } %>
 </body>
 
