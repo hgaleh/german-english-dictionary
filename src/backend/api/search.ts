@@ -12,6 +12,20 @@ class LeoResult {
   phrase?: Pair[] | null;
   example?: Pair[] | null;
   base?: string[] | null;
+  sim?: string[] | null;
+}
+
+function getSimilarWords($: cheerio.CheerioAPI) {
+  const section = $(`#sim table tbody tr td:nth-child(2)`);
+    if (!section.length) return null;
+
+  const result: string[] = [];
+
+    section.find('a').each((_, el) => {
+      const sourceText = getText($, el);
+      result.push(sourceText);
+    });
+    return result;
 }
 
 function getDefinitions($: cheerio.CheerioAPI) {
@@ -78,6 +92,7 @@ export async function search(term: string, timeoutMs: number = 5000): Promise<Le
     result.phrase = definitionGetter('phrase');
     result.example = definitionGetter('example');
     result.base = getBaseForms($);
+    result.sim = getSimilarWords($);
   } catch (e) {
     // Any error (request or parse) just returns an empty result
   }

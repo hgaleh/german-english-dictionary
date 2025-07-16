@@ -13,16 +13,7 @@
   <span id="notif">Copied!</span>
   <input id="txtSearch" type="text" value="<%= keyword %>" onkeypress="lib.search(this, event)">
   <% if (translation.base) { %>
-    <h3>Base forms: </h3>
-    <ul>
-      <% translation.base.forEach(function(base) { %>
-        <li>
-          <a href="/?q=<%= base %>">
-            <%= base %>
-          </a>
-        </li>
-        <% }); %>
-    </ul>
+    <%- include('links', { title: 'Base forms' , links: translation.base }) %>
   <% } %>
 
   <% if (translation.subst) { %>
@@ -51,6 +42,10 @@
 
   <% if (translation.example) { %>
     <%- include('part', { name: 'Examples' , data: mapDataDe(translation.example), onclick: 'lib.onExampleClick' }) %>
+  <% } %>
+
+  <% if (translation.sim) { %>
+    <%- include('links', { title: 'Similar words' , links: translation.sim }) %>
   <% } %>
 </body>
 
