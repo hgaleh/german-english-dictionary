@@ -11,37 +11,37 @@
 
 <body>
   <span id="notif">Copied!</span>
-  <input id="txtSearch" type="text" value="<%= keyword %>" onkeypress="lib.search(this, event)">
+  <input translate="no" id="txtSearch" type="text" value="<%= keyword %>" onkeypress="lib.search(this, event)">
   <% if (translation.base) { %>
     <%- include('links', { title: 'Base forms' , links: translation.base }) %>
   <% } %>
 
   <% if (translation.subst) { %>
-    <%- include('part', { name: 'Nouns' , data: mapDataEn(translation.subst), onclick: 'lib.onPartClick' }) %>
+    <%- include('part', { name: 'Nouns' , data: mapDataEn(translation.subst), onclick: 'lib.onPartClick', translate: true }) %>
   <% } %>
 
   <% if (translation.verb) { %>
-    <%- include('part', { name: 'Verbs' , data: mapDataEn(translation.verb), onclick: 'lib.onPartClick' }) %>
+    <%- include('part', { name: 'Verbs' , data: mapDataEn(translation.verb), onclick: 'lib.onPartClick', translate: true }) %>
   <% } %>
 
   <% if (translation.adjadv) { %>
-    <%- include('part', { name: 'Adjectives / Adverbs' , data: mapDataEn(translation.adjadv), onclick: 'lib.onPartClick' }) %>
+    <%- include('part', { name: 'Adjectives / Adverbs' , data: mapDataEn(translation.adjadv), onclick: 'lib.onPartClick', translate: true }) %>
   <% } %>
 
   <% if (translation.praep) { %>
-    <%- include('part', { name: 'Prepositions / Pronouns' , data: mapDataEn(translation.praep), onclick: 'lib.onPartClick' }) %>
+    <%- include('part', { name: 'Prepositions / Pronouns' , data: mapDataEn(translation.praep), onclick: 'lib.onPartClick', translate: true }) %>
   <% } %>
 
   <% if (translation.definition) { %>
-    <%- include('part', { name: 'Definitions' , data: mapDataEn(translation.definition), onclick: 'lib.onPartClick' }) %>
+    <%- include('part', { name: 'Definitions' , data: mapDataEn(translation.definition), onclick: 'lib.onPartClick', translate: true }) %>
   <% } %>
 
   <% if (translation.phrase) { %>
-    <%- include('part', { name: 'Phrases / Collocations' , data: mapDataDe(translation.phrase), onclick: 'lib.onPartClick' }) %>
+    <%- include('part', { name: 'Phrases / Collocations' , data: mapDataDe(translation.phrase), onclick: 'lib.onPartClick', translate: false }) %>
   <% } %>
 
   <% if (translation.example) { %>
-    <%- include('part', { name: 'Examples' , data: mapDataDe(translation.example), onclick: 'lib.onExampleClick' }) %>
+    <%- include('part', { name: 'Examples' , data: mapDataDe(translation.example), onclick: 'lib.onExampleClick', translate: false }) %>
   <% } %>
 
   <% if (translation.sim) { %>
