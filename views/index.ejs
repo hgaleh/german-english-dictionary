@@ -16,6 +16,10 @@
     <%- include('links', { title: 'Base forms' , links: translation.base }) %>
   <% } %>
 
+  <% if (translation.phrase) { %>
+    <%- include('part', { name: 'Phrases / Collocations' , data: mapDataDe(translation.phrase), onclick: 'lib.onPartClick', translate: false }) %>
+  <% } %>
+
   <% if (translation.subst) { %>
     <%- include('part', { name: 'Nouns' , data: mapDataEn(translation.subst), onclick: 'lib.onPartClick', translate: true }) %>
   <% } %>
@@ -34,10 +38,6 @@
 
   <% if (translation.definition) { %>
     <%- include('part', { name: 'Definitions' , data: mapDataEn(translation.definition), onclick: 'lib.onPartClick', translate: true }) %>
-  <% } %>
-
-  <% if (translation.phrase) { %>
-    <%- include('part', { name: 'Phrases / Collocations' , data: mapDataDe(translation.phrase), onclick: 'lib.onPartClick', translate: false }) %>
   <% } %>
 
   <% if (translation.example) { %>
