@@ -2,7 +2,7 @@
 <ul>
 <% data.forEach(function(row) { %>
     <li>
-        <a class="noclick" translate="no" onclick="<%= onclick %>(this)" title="<%= row.title.join(', ') %>">
+        <a class="noclick" translate="<%=translate ? 'no' : 'yes'%>"" onclick="<%= onclick %>(this)" title="<%= row.title.join(', ') %>">
             <%- row.text.map(function(t) { return `<span translate="${translate ? 'yes' : 'no'}" >` + t.replace(/\[([^\]]+)\]/g, '<span class="bracketed">[$1]</span>') + '</span>'; }).join(' &ndash; ') %>
         </a>
     </li>
