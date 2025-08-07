@@ -17,15 +17,15 @@ class LeoResult {
 
 function getSimilarWords($: cheerio.CheerioAPI) {
   const section = $(`#sim table tbody tr td:nth-child(2)`);
-    if (!section.length) return null;
+  if (!section.length) return null;
 
   const result: string[] = [];
 
-    section.find('a').each((_, el) => {
-      const sourceText = getText($, el);
-      result.push(sourceText);
-    });
-    return result;
+  section.find('a').each((_, el) => {
+    const sourceText = getText($, el);
+    result.push(sourceText);
+  });
+  return result;
 }
 
 function getDefinitions($: cheerio.CheerioAPI) {
@@ -69,7 +69,10 @@ type Lang = 'en' | 'de';
 export type Pair = Record<Lang, string[]>;
 
 function getText($: cheerio.CheerioAPI, elt: any): string {
-  return $(elt).text().trim();
+  const html = $(elt).html() || '';
+  const withoutSup = html.replace(/<sup[^>]*>[\s\S]*?<\/sup>/gi, '');
+  const textOnly = withoutSup.replace(/<[^>]+>/g, '').trim();
+  return textOnly;
 }
 
 export async function search(term: string, timeoutMs: number = 5000): Promise<LeoResult> {
