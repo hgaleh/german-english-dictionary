@@ -58,13 +58,79 @@ a.noclick span.bracketed {
 }
 
 h4 {
-  font-family: 'Montserrat', serif;
-  user-select: none;
+    font-family: 'Montserrat', serif;
+    user-select: none;
 }
 
-body, li {
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  background-color: #FFF9E3;
-  color: #333333;
+body,
+li {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fdfdfd;
+    color: #222;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header {
+    padding: 1rem 2rem;
+    background-color: #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+
+h1 {
+    margin: 0;
+    font-weight: normal;
+}
+
+main {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+button#toggleNight {
+    cursor: pointer;
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button#toggleNight:hover {
+    background-color: #666;
+}
+
+/* Night mode styles */
+body.night-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.night-mode header {
+    background-color: #1e1e1e;
+    border-bottom-color: #333;
+}
+
+body.night-mode button#toggleNight {
+    background-color: #bbb;
+    color: #121212;
+}
+
+body.night-mode button#toggleNight:hover {
+    background-color: #ddd;
+}
+
+body.night-mode a {
+    color: #e0e0e0;
 }

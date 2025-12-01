@@ -69,10 +69,14 @@ type Lang = 'en' | 'de';
 export type Pair = Record<Lang, string[]>;
 
 function getText($: cheerio.CheerioAPI, elt: any): string {
-  const html = $(elt).html() || '';
-  const withoutSup = html.replace(/<sup[^>]*>[\s\S]*?<\/sup>/gi, '');
-  const textOnly = withoutSup.replace(/<[^>]+>/g, '').trim();
-  return textOnly;
+  $(elt).find('sup').remove();
+
+  const text = $(elt).text()
+    .replace(/\u00A0/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  return text;
 }
 
 export async function search(term: string, timeoutMs: number = 5000): Promise<LeoResult> {
