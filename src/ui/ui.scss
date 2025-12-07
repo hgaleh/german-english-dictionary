@@ -50,10 +50,6 @@ a.noclick span.bracketed {
     z-index: 10;
     pointer-events: none;
     transition: opacity 0.2s;
-    display: none;
-}
-
-#notif.show {
     display: inline;
 }
 
@@ -96,21 +92,6 @@ main {
     margin: 0 auto;
 }
 
-button#toggleNight {
-    cursor: pointer;
-    background-color: #444;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-button#toggleNight:hover {
-    background-color: #666;
-}
-
 /* Night mode styles */
 body.night-mode {
     background-color: #121212;
@@ -120,15 +101,6 @@ body.night-mode {
 body.night-mode header {
     background-color: #1e1e1e;
     border-bottom-color: #333;
-}
-
-body.night-mode button#toggleNight {
-    background-color: #bbb;
-    color: #121212;
-}
-
-body.night-mode button#toggleNight:hover {
-    background-color: #ddd;
 }
 
 body.night-mode a {

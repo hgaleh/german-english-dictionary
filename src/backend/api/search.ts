@@ -1,19 +1,9 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
+import { LeoResult } from '../../model/leo-result';
+import { Pair } from '../../model/pair';
 
 const uri = 'http://dict.leo.org/%s%s/';
-
-class LeoResult {
-  subst?: Pair[] | null;
-  verb?: Pair[] | null;
-  adjadv?: Pair[] | null;
-  praep?: Pair[] | null;
-  definition?: Pair[] | null;
-  phrase?: Pair[] | null;
-  example?: Pair[] | null;
-  base?: string[] | null;
-  sim?: string[] | null;
-}
 
 function getSimilarWords($: cheerio.CheerioAPI) {
   const section = $(`#sim table tbody tr td:nth-child(2)`);
@@ -64,9 +54,7 @@ function getBaseForms($: cheerio.CheerioAPI): string[] | null {
   return result;
 }
 
-type Lang = 'en' | 'de';
 
-export type Pair = Record<Lang, string[]>;
 
 function getText($: cheerio.CheerioAPI, elt: any): string {
   $(elt).find('sup').remove();
